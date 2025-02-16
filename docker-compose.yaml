@@ -1,0 +1,16 @@
+services:
+  postgres:  # Your postgres service
+    build: . # Official image
+    container_name: postgres  # Explicit name for the container
+    restart: always # restart the container if it fails for any reason
+    environment:
+      POSTGRES_USER: cvuser
+      POSTGRES_PASSWORD: cvpassword
+      POSTGRES_DB: cv_manager
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
